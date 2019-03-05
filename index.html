@@ -8,50 +8,45 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
+    <style media="screen">    </style>
   </head>
   <body>
-    <h1>Real time database</h1>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h3>コンソール確認</h3>
+      <h4>プロジェクト：　FireBasePush</h4>
+      <hr>
+      Firebase の初期化をscriptタグタイプでやってるので外部サイトのSSLでOK
     <script>
-      firebase.initializeApp({
-        apiKey: ' AIzaSyCAQ_TOCtBTXel87hCCRdXy-L4eUPt1UFg',
-        authDomain: 'gcmproject-141802.firebaseapp.com',
-        projectId: 'gcmproject-141802'
-      });
+      document.addEventListener('DOMContentLoaded', function() {
+        firebase.initializeApp({
+          apiKey: 'AIzaSyAmWtMB4M-OLI41PIEsg_thu8cBZD7aWm8 ',
+          authDomain: 'fir-push-44665.firebaseapp.com',
+          projectId: 'fir-push-44665'
+        });
 
-      // Initialize Cloud Firestore through Firebase
-      var db = firebase.firestore();
-      db.collection("users").add({
-          first: "Ada",
-          last: "Lovelace",
-          born: 1815
-      })
-      .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
+        var db = firebase.firestore();
+
+        // データ追加
+        // db.collection("users").add({
+        //     first: "Ada",
+        //     last: "Lovelace",
+        //     born: 1815
+        // })
+        // .then(function(docRef) {
+        //     console.log("Document written with ID: ", docRef.id);
+        // })
+        // .catch(function(error) {
+        //     console.error("Error adding document: ", error);
+        // });
+
+        // データ読出
+        db.collection("users").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
+            });
+        });
       });
-      // Add a second document with a generated ID.
-      db.collection("users").add({
-          first: "Alan",
-          middle: "Mathison",
-          last: "Turing",
-          born: 1912
-      })
-      .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
-      });
-      db.collection("users").get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-              console.log(`${doc.id} => ${doc.data()}`);
-          });
-      });
-</script>
-    <script src="app.js"></script>
+    </script>
   </body>
-  <style>
-  </style>
 </html>
