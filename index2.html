@@ -13,9 +13,14 @@
   <body>
     <div id="message">
       <h2>Cloud Firestoreテスト</h2>
-      <h4>登録データの読み出し</h4>
+      <h4>登録データの読み出し(Cloud Firestore コレクション　"users")</h4>
       <hr>
       <ul class="res"></ul>
+      <table id="res">
+        <tr>
+          <td>filePath</td><td>画像</td>
+        </tr>
+      </table>
       <hr>
       Firebase の初期化を<font color="red">scriptタグタイプ</font>でやってるので外部サイトのSSLでOK
     <script>
@@ -46,6 +51,14 @@
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
                 var str = `id: ${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`;
                 $('.res').prepend('<li>' + str + '</li>');
+            });
+        });
+
+        db.collection("images").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
+                var str = `<tr><td> ${doc.data().filePath} </td><td><img src='${doc.data().downloadUrl}'></td></tr>`;
+                $('#res').prepend(str);
             });
         });
       });
