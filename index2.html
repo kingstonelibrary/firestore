@@ -57,7 +57,9 @@
         db.collection("images").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
-                var str = `<tr><td> ${doc.data().filePath} </td><td><img src='${doc.data().downloadUrl}'></td></tr>`;
+                var str = `<tr><td> ${doc.data().filePath} </td><td>
+                  <a href="https://firebasestorage.googleapis.com/v0/b/fir-push-44665.appspot.com/o/${encodeURIComponent(doc.data().filePath)}?alt=media">
+                  <img src='${doc.data().downloadUrl}'></a></td></tr>`;
                 $('#res').append(str);
             });
         });
