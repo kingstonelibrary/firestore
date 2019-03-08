@@ -13,9 +13,6 @@
   <body>
     <div id="message">
       <h2>Cloud Firestoreテスト</h2>
-      <h3>コンソール確認</h3>
-      <h4>プロジェクト：　FireBasePush</h4>
-      <h4><a href="https://firebase.google.com/docs/firestore/quickstart?authuser=0">チュートリアル</a></h4>
       <h4>登録データの読み出し</h4>
       <hr>
       <div class="res"></div>
@@ -47,7 +44,7 @@
         db.collection("users").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
-                $('.res').text(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`)
+                $('.res').text(`id: ${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`)
             });
         });
       });
