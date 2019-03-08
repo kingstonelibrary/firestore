@@ -58,7 +58,7 @@
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
                 var str = `<tr><td> ${doc.data().filePath} </td><td><img src='${doc.data().downloadUrl}'></td></tr>`;
-                $('#res').apend(str);
+                $('#res').append(str);
             });
         });
       });
