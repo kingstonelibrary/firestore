@@ -15,7 +15,7 @@
       <h2>Cloud Firestoreテスト</h2>
       <h4>登録データの読み出し</h4>
       <hr>
-      <div class="res"></div>
+      <ul class="res"></ul>
       <hr>
       Firebase の初期化を<font color="red">scriptタグタイプ</font>でやってるので外部サイトのSSLでOK
     <script>
@@ -44,7 +44,8 @@
         db.collection("users").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
-                $('.res').text(`id: ${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`)
+                var str = `id: ${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`;
+                $('.res').prepend('<li>' + str + '</li>');
             });
         });
       });
