@@ -17,7 +17,7 @@
       <hr>
       <ul class="res"></ul>
       <table id="res" border=1>
-        <tr class="1st">
+        <tr>
           <td>filePath</td><td>画像</td>
         </tr>
       </table>
@@ -58,7 +58,7 @@
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => first: ${doc.data().first} last: ${doc.data().last} born: ${doc.data().born}`);
                 var str = `<tr><td> ${doc.data().filePath} </td><td><img src='${doc.data().downloadUrl}'></td></tr>`;
-                $('#res .1st').prepend(str);
+                $('#res').apend(str);
             });
         });
       });
