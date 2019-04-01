@@ -2,4 +2,5 @@
 
 GitHUB		kingstonelibrary/firestore		(https://github.com/kingstonelibrary/firestore)
 
+プッシュコマンド
 $ git push origin gh-pages
